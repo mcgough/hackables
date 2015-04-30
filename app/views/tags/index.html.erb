@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1>Hackables <small>Getting started guides</small></h1>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+<h1>Tags</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><b>Tag Title</b></th>
+        <th><b>Associated Guides</b></th>
+      </tr>
+    </thead>
+
+    <% @tags.each do |t| %>
+      <tr>
+      <td>
+      <%= link_to t.name, t %>
+      </td>
+      <td>
+      <% t.guides.each do |g| %>
+        <span class="label label-default"><%= link_to g.title, g %></span>
+      <% end %>
+      </td>
+      </tr>
+
+    <% end %>
+  </table>
+
+  <%= link_to "<span class='glyphicon glyphicon glyphicon-plus' aria-hidden='true'></span> Add Tag".html_safe, new_tag_path, :class=>"btn btn-default" %>
+
+</div>
+</div>

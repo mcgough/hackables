@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   root 'guides#index'
-  resources :guides, :only => [:index, :create, :new, :show]
+  resources :guides
+  resources :tags
 
 
   # Example of regular route:

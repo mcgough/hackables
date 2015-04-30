@@ -1,0 +1,18 @@
+<div class="page-header">
+  <h1><%= @tag.name %> </small></h1>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<b>Associated Guides:</b>
+<ul>
+ <% @tag.guides.each do |f| %>
+  <li><%= link_to f.title, f %></li>
+ <% end %>
+</ul>
+<%= link_to "<span class='glyphicon glyphicon glyphicon-plus' aria-hidden='true'></span> Edit Tag".html_safe, edit_tag_path, :class=>"btn btn-default" %>
+
+</div>
+
+
+</div>

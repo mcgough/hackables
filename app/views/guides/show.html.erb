@@ -2,4 +2,17 @@
   <h1><%= @guide.title %> <small><%= @guide.description %></small></h1>
 </div>
 
+<div class="row">
+<div class="col-md-4">
+<b>Guide Tags:</b>
+<ul>
+ <% @guide.tags.each do |f| %>
+  <li><%= link_to f.name, f %></li>
+ <% end %>
+</ul>
+<%= link_to "<span class='glyphicon glyphicon glyphicon-plus' aria-hidden='true'></span> Edit Guide".html_safe, edit_guide_path, :class=>"btn btn-default" %>
 
+</div>
+
+
+</div>

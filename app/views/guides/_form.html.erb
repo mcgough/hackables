@@ -1,0 +1,6 @@
+    <%= bootstrap_form_for @guide do |f| %>
+    <%= f.text_field :title, label: "Guide Title", :placeholder => "What's the title of this guide?" %>
+    <%= f.text_area :description, label: "About Guide", :placeholder => "What is this guide about?" %>
+    <%= f.collection_check_boxes :tag_ids, @tags, :id, :name, label: "Guide Tags" %>
+    <%= f.submit %>
+    <% end %>

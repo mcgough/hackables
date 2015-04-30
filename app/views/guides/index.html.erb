@@ -3,16 +3,26 @@
 </div>
 
 <div class="row">
-
+<div class="col-md-12">
   <table class="table table-striped">
-    <thead><tr><th><b>Guide Title</b></th><th><b>About</b></th></tr></thead>
+    <thead><tr><th><b>Guide Title</b></th><th><b>About</b></th><th><b>Tags</b></th></tr></thead>
     <% @guides.each do |p| %>
       <tr>
       <td><%= link_to p.title, p %></td>
       <td><%= p.description %></td>
+      <td>
+
+        <% p.tags.each do |f| %>
+        <span class="label label-default"><%= f.name %></span>
+        <% end %>
+
+
+      </td>
       </tr>
     <% end %>
   </table>
+
 <%= link_to "<span class='glyphicon glyphicon glyphicon-plus' aria-hidden='true'></span> Add Guide".html_safe, new_guide_path, :class=>"btn btn-default" %>
 
+</div>
 </div>

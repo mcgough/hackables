@@ -10,8 +10,10 @@
 <body>
 <div class="container">
 <ul class="nav nav-pills">
-  <li role="presentation" class=""><a href="<%= root_path %>">Home</a></li>
+  <li role="presentation" class=""><a href="<%= root_path %>">All Guides</a></li>
+  <li role="presentation"><a href="<%= tags_path %>">Tags</a></li>
   <li role="presentation"><a href="<%= new_guide_path %>">Create Guide</a></li>
+
 </ul>
 <%= yield %>
 
