@@ -28,6 +28,23 @@ class TagsController < ApplicationController
     redirect_to @tag
   end
 
+  # ADD DESTROY METHOD FOR DELETING A TAG
+
+  def destroy
+    @tag = Tag.find(params[:id])
+      unless @tag.guides
+        Tag.destroy(params[:id])
+      else
+        flash[:info] = "You removed the #{@tag.name} tag from  #{@tag.guides.length} " + "guide".pluralize(@tag.guides.length) + "."
+        @tag.guides do |guide|
+          guide.tags.delete(params[:id])
+      end
+      Tag.destroy(params[:id])
+    end
+
+    redirect_to tags_path
+  end
+
 private
 
   def tag_params
