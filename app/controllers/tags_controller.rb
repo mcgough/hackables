@@ -11,7 +11,7 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.create(tag_params)
-    redirect_to @tag
+    redirect_to tags_path
   end
 
   def edit
@@ -35,7 +35,7 @@ class TagsController < ApplicationController
       unless @tag.guides
         Tag.destroy(params[:id])
       else
-        flash[:info] = "You removed the #{@tag.name} tag from  #{@tag.guides.length} " + "guide".pluralize(@tag.guides.length) + "."
+        flash[:info] = "You removed the #{@tag.name} tag from #{@tag.guides.length} " + "guide".pluralize(@tag.guides.length) + "."
         @tag.guides do |guide|
           guide.tags.delete(params[:id])
       end

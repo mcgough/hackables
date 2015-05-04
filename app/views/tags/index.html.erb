@@ -4,15 +4,17 @@
 
 <div class="row">
 <div class="col-md-12">
+    <%= render "layouts/flash" %>
+
 <h1>Tags</h1>
   <table class="table table-striped">
     <thead>
       <tr>
         <th><b>Tag Title</b></th>
         <th><b>Associated Guides</b></th>
+        <th></th>
       </tr>
     </thead>
-
     <% @tags.each do |t| %>
       <tr>
       <td>
@@ -23,6 +25,9 @@
         <span class="label label-default"><%= link_to g.title, g %></span>
       <% end %>
       </td>
+      <td>
+      <%= link_to "<span class='glyphicon glyphicon glyphicon-trash' aria-hidden='true'></span>".html_safe, tag_path(t.id), :method => :delete, data:{confirm: "Do you want to remove tag from #{t.guides.length} " + "guide".pluralize(t.guides.length) + "."}, :class=>"btn btn-danger btn-xs" %>
+      </td>
       </tr>
 
     <% end %>
@@ -32,3 +37,4 @@
 
 </div>
 </div>
+

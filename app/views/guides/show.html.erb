@@ -3,7 +3,7 @@
 </div>
 
 <div class="row">
-<div class="col-md-4">
+<div class="col-md-6">
 <b>Guide Tags:</b>
 <ul>
  <% @guide.tags.each do |f| %>
@@ -12,6 +12,12 @@
 </ul>
 <%= link_to "<span class='glyphicon glyphicon glyphicon-plus' aria-hidden='true'></span> Edit Guide".html_safe, edit_guide_path, :class=>"btn btn-default" %>
 
+<ul>
+  <% @title_urls.each do |j,k| %>
+  <li><a href="<%= k %>" target="_blank"><%= j %></a></li>
+
+  <% end %>
+</ul>
 </div>
 
 
