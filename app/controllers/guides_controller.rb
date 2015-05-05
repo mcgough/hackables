@@ -25,16 +25,21 @@ def show
   @guide = Guide.find(params[:id])
   @tags = Tag.all
 
+  @guide_tags = ""
+
   @guide.tags.each do |x|
-    @guide_tags = x.name
+    @guide_tags = @guide_tags + " " + x.name
   end
 
-  p @guide.title
+  # p @guide.title
+  # p @guide_tags
+
+  # p "#{@guide_tags} learn"
 
   request = Typhoeus::Request.new(
     "www.reddit.com/search.json",
     method: :get,
-    params: {q: "#{@guide_tags} #{@guide.title}"}
+    params: {q: "learn #{@guide_tags}"}
     )
 
   response = request.run
@@ -42,6 +47,10 @@ def show
 
   @titles = data["data"]["children"].map {|e| e["data"]["title"].to_s}
   @urls = data["data"]["children"].map {|e| e["data"]["url"].to_s}
+  # @photos = data["data"]["children"].map {|e| e["data"]["thumbnail"]}
+
+  # p @photos
+  # @urls = data["data"]["children"].map {|e| {name: e["data"]["url"].to_s, thing: "blah"}}
 
   @title_urls = {}
   Hash[@titles.zip(@urls).each {|a,b| @title_urls[a] = b }]

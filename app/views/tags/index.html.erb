@@ -13,6 +13,7 @@
         <th><b>Tag Title</b></th>
         <th><b>Associated Guides</b></th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <% @tags.each do |t| %>
@@ -24,6 +25,9 @@
       <% t.guides.each do |g| %>
         <span class="label label-default"><%= link_to g.title, g %></span>
       <% end %>
+      </td>
+      <td>
+      <%= link_to "<span class='glyphicon glyphicon glyphicon-pencil' aria-hidden='true'></span>".html_safe, edit_tag_path(t.id), :class=>"btn btn-primary btn-xs" %>
       </td>
       <td>
       <%= link_to "<span class='glyphicon glyphicon glyphicon-trash' aria-hidden='true'></span>".html_safe, tag_path(t.id), :method => :delete, data:{confirm: "Do you want to remove tag from #{t.guides.length} " + "guide".pluralize(t.guides.length) + "."}, :class=>"btn btn-danger btn-xs" %>

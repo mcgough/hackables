@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429223427) do
+ActiveRecord::Schema.define(version: 20150505164110) do
+
+  create_table "contents", force: :cascade do |t|
+    t.string   "name"
+    t.string   "url"
+    t.text     "desc"
+    t.text     "img"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contents_guides", force: :cascade do |t|
+    t.integer  "content_id"
+    t.integer  "guide_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "contents_guides", ["content_id"], name: "index_contents_guides_on_content_id"
+  add_index "contents_guides", ["guide_id"], name: "index_contents_guides_on_guide_id"
 
   create_table "guides", force: :cascade do |t|
     t.string   "title"

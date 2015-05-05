@@ -3,14 +3,7 @@
 </div>
 
 <div class="row">
-<div class="col-md-6">
-<b>Guide Tags:</b>
-<ul>
- <% @guide.tags.each do |f| %>
-  <li><%= link_to f.name, f %></li>
- <% end %>
-</ul>
-<%= link_to "<span class='glyphicon glyphicon glyphicon-plus' aria-hidden='true'></span> Edit Guide".html_safe, edit_guide_path, :class=>"btn btn-default" %>
+<div class="col-md-8">
 
 <ul>
   <% @title_urls.each do |j,k| %>
@@ -19,6 +12,30 @@
   <% end %>
 </ul>
 </div>
+</div>
+<div class="row">
+<div class="col-md-6">
+
+<b>Tags for this guide:</b>
+<ul>
+ <% @guide.tags.each do |f| %>
+  <li><%= link_to f.name, f %></li>
+ <% end %>
+</ul>
+<%= link_to "<span class='glyphicon glyphicon glyphicon-plus' aria-hidden='true'></span> Edit Guide".html_safe, edit_guide_path, :class=>"btn btn-default" %>
+</div>
+</div>
 
 
+<div class="row">
+<div class="col-md-6">
+
+
+ <%= bootstrap_form_for [@guide, @content] do |f| %>
+ <%= f.text_area :value, label: "Add content" %>
+ <%= f.submit "Content Title", class: "btn btn-primary" %>
+ <% end %>
+
+
+</div>
 </div>
